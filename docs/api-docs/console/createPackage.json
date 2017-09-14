@@ -6,21 +6,19 @@
 	},
 	"basePath": "/service",
 	"tags": [{
-		"name": "Packages"
-	}, {
-		"name": "PackagesDelete"
-	}, {
 		"name": "PackagesCreateWithDocumentLayoutMultipart"
-	}, {
-		"name": "PackagesCreate"
-	}, {
-		"name": "PackagesCreateMultiPart"
-	}, {
-		"name": "PackagesCreateWithTemplate"
 	}, {
 		"name": "PackagesCreateWithDocumentLayout"
 	}, {
-		"name": "PackagesSimpleCreate"
+		"name": "PackagesDelete"
+	}, {
+		"name": "Packages"
+	}, {
+		"name": "PackagesCreateWithTemplate"
+	}, {
+		"name": "PackagesCreateMultiPart"
+	}, {
+		"name": "PackagesCreate"
 	}],
 	"schemes": ["http"],
 	"paths": {
@@ -299,30 +297,6 @@
 					},
 					"500": {
 						"description": "Internal server error due to encoding the data"
-					}
-				}
-			}
-		},
-		"/Packages/SimpleCreate": {
-			"post": {
-				"tags": ["PackagesSimpleCreate"],
-				"summary": "DSS Simple create Package",
-				"description": "DSS Simple create Package",
-				"operationId": "dssUniversalConnector",
-				"consumes": ["application/json"],
-				"produces": ["application/json"],
-				"parameters": [{
-					"in": "body",
-					"name": "body",
-					"description": "JSon Data for DSS create package",
-					"required": true,
-					"schema": {
-						"type": "string"
-					}
-				}],
-				"responses": {
-					"default": {
-						"description": "successful operation"
 					}
 				}
 			}
