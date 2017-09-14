@@ -1,0 +1,331 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"version": "1.0.0",
+		"title": ""
+	},
+	"basePath": "/service",
+	"tags": [{
+		"name": "Packages"
+	}, {
+		"name": "PackagesDelete"
+	}, {
+		"name": "PackagesCreateWithDocumentLayoutMultipart"
+	}, {
+		"name": "PackagesCreate"
+	}, {
+		"name": "PackagesCreateMultiPart"
+	}, {
+		"name": "PackagesCreateWithTemplate"
+	}, {
+		"name": "PackagesCreateWithDocumentLayout"
+	}, {
+		"name": "PackagesSimpleCreate"
+	}],
+	"schemes": ["http"],
+	"paths": {
+		"/Packages/Create": {
+			"post": {
+				"tags": ["PackagesCreate"],
+				"summary": "DSS Create Package",
+				"description": "DSS Create Package",
+				"operationId": "dssUniversalConnector",
+				"consumes": ["application/json"],
+				"produces": ["application/json"],
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"description": "JSon Data for DSS create package",
+					"required": true,
+					"schema": {
+						"type": "string"
+					}
+				}],
+				"responses": {
+					"default": {
+						"description": "successful operation"
+					}
+				}
+			}
+		},
+		"/Packages/CreateMultiPart": {
+			"post": {
+				"tags": ["PackagesCreateMultiPart"],
+				"summary": "Multipart Upload Package creation",
+				"description": "Multipart Upload Package creation",
+				"operationId": "dssUniversalConnectorMultiPart",
+				"consumes": ["multipart/form-data"],
+				"produces": ["application/json"],
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"description": "documents multipart attachment",
+					"required": true,
+					"schema": {
+						"type": "array",
+						"items": {
+							"$ref": "#/definitions/FormDataBodyPart"
+						}
+					}
+				}, {
+					"in": "body",
+					"name": "body",
+					"description": "documents multipart attachment filedata",
+					"required": true,
+					"schema": {
+						"type": "array",
+						"items": {
+							"$ref": "#/definitions/FormDataContentDisposition"
+						}
+					}
+				}, {
+					"in": "body",
+					"name": "body",
+					"description": "Json Body",
+					"required": true,
+					"schema": {
+						"type": "string"
+					}
+				}],
+				"responses": {
+					"default": {
+						"description": "successful operation"
+					}
+				}
+			}
+		},
+		"/Packages/CreateWithDocumentLayout": {
+			"post": {
+				"tags": ["PackagesCreateWithDocumentLayout"],
+				"summary": "DSS create Package from layout",
+				"description": "DSS  create Package from layout",
+				"operationId": "dssCreatePackageFromDocLayout",
+				"consumes": ["application/json"],
+				"produces": ["application/json"],
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"required": false,
+					"schema": {
+						"type": "string"
+					}
+				}],
+				"responses": {
+					"default": {
+						"description": "successful operation"
+					}
+				}
+			}
+		},
+		"/Packages/CreateWithDocumentLayoutMultipart": {
+			"post": {
+				"tags": ["PackagesCreateWithDocumentLayoutMultipart"],
+				"summary": "DSS create Package from layout multipart file transfer",
+				"description": "DSS create Package from layout multipart file transfer",
+				"operationId": "dssCreatePackageFromDocLayoutMultipart",
+				"consumes": ["multipart/form-data"],
+				"produces": ["application/json"],
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"required": false,
+					"schema": {
+						"type": "array",
+						"items": {
+							"$ref": "#/definitions/FormDataBodyPart"
+						}
+					}
+				}, {
+					"in": "body",
+					"name": "body",
+					"required": false,
+					"schema": {
+						"type": "array",
+						"items": {
+							"$ref": "#/definitions/FormDataContentDisposition"
+						}
+					}
+				}, {
+					"in": "body",
+					"name": "body",
+					"required": false,
+					"schema": {
+						"type": "array",
+						"items": {
+							"$ref": "#/definitions/FormDataBodyPart"
+						}
+					}
+				}, {
+					"in": "body",
+					"name": "body",
+					"required": false,
+					"schema": {
+						"type": "array",
+						"items": {
+							"$ref": "#/definitions/FormDataContentDisposition"
+						}
+					}
+				}, {
+					"in": "body",
+					"name": "body",
+					"required": false,
+					"schema": {
+						"type": "string"
+					}
+				}],
+				"responses": {
+					"default": {
+						"description": "successful operation"
+					}
+				}
+			}
+		},
+		"/Packages/CreateWithTemplate": {
+			"post": {
+				"tags": ["PackagesCreateWithTemplate"],
+				"summary": "DSS create Package from template",
+				"description": "DSS create Package from template",
+				"operationId": "dssCreatePackageFromTemplate",
+				"consumes": ["application/json"],
+				"produces": ["application/json"],
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"required": false,
+					"schema": {
+						"type": "string"
+					}
+				}],
+				"responses": {
+					"default": {
+						"description": "successful operation"
+					}
+				}
+			}
+		},
+		"/Packages/Delete": {
+			"get": {
+				"tags": ["PackagesDelete"],
+				"summary": "DSS Delete Package",
+				"description": "DSS  delete Package",
+				"operationId": "dssDeletePackage",
+				"consumes": ["application/json"],
+				"produces": ["application/json"],
+				"parameters": [{
+					"name": "packageId",
+					"in": "query",
+					"description": "Package ID",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "orgName",
+					"in": "query",
+					"description": "ORG Name",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "deleteOption",
+					"in": "query",
+					"description": "Delete Option",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"default": {
+						"description": "successful operation"
+					}
+				}
+			}
+		},
+		"/Packages/Document": {
+			"get": {
+				"tags": ["Packages"],
+				"summary": "Retrieves a Document from Package",
+				"description": "Retrieves Documents",
+				"operationId": "downloadIndividualDocument",
+				"produces": ["application/json"],
+				"parameters": [{
+					"name": "packageId",
+					"in": "query",
+					"description": "Package ID",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "orgName",
+					"in": "query",
+					"description": "ORG Name",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "documentId",
+					"in": "query",
+					"description": "Document ID",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Base 64  Document"
+					},
+					"500": {
+						"description": "Internal server error due to encoding the data"
+					}
+				}
+			}
+		},
+		"/Packages/Retrieve": {
+			"get": {
+				"tags": ["Packages"],
+				"summary": "Retrieves Package Documents",
+				"description": "Retrieves Package Documents",
+				"operationId": "downloadDocuments",
+				"produces": ["application/json"],
+				"parameters": [{
+					"name": "packageId",
+					"in": "query",
+					"description": "Package ID",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "orgName",
+					"in": "query",
+					"description": "Package Org Name",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Base 64 Zipped Document"
+					},
+					"500": {
+						"description": "Internal server error due to encoding the data"
+					}
+				}
+			}
+		},
+		"/Packages/SimpleCreate": {
+			"post": {
+				"tags": ["PackagesSimpleCreate"],
+				"summary": "DSS Simple create Package",
+				"description": "DSS Simple create Package",
+				"operationId": "dssUniversalConnector",
+				"consumes": ["application/json"],
+				"produces": ["application/json"],
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"description": "JSon Data for DSS create package",
+					"required": true,
+					"schema": {
+						"type": "string"
+					}
+				}],
+				"responses": {
+					"default": {
+						"description": "successful operation"
+					}
+				}
+			}
+		}
+	}
+}
